@@ -148,6 +148,7 @@ while True:
         print("Kaybedersen 1 önceki bölümden başlarsın.")
         if(hsec=="e" or hsec=="E"):
             import bolum2
+            os.system("python3 bolum2.py")
             break
         elif(hsec=="h" or hsec=="H"):
             sys.exit
