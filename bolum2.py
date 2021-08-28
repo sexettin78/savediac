@@ -134,9 +134,9 @@ while True:
         import bolum3
         break
     if(oyuncu2.puan==100 or oyuncu1.can <= 0 or oyuncu1.power <= 0 ):
-        hsec = input("\033[91m\nOyunu Kaybettin,Örümceğe yenildin! Bu bölüme Baştan başlamak ister misin? e/y")
+        hsec = input("\033[91m\nOyunu Kaybettin,Örümceğe yenildin! Bu bölüme Baştan başlamak ister misin? e/h  ")
         if(hsec=="e" or hsec=="E"):
-            import bolum2
+            os.system("python3 bolum2.py")
             break
         elif(hsec=="h" or hsec=="H"):
             sys.exit
