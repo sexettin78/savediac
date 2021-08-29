@@ -4,25 +4,28 @@ def hatali_eksik():
     print('!Eksik ya da Hatalı tuşlama!')
 
 
-print("""\033[96m\n İyileştirme gücünü tam anlamıyla kazanmıştın.Kendini iyileştirdikten sonra kuzeninin yanına gittin ve orada saatlerce düşündün.Aniden bir ses geldi mağara yıkılacak gibiydi!
-Ne olduğunu anlamadan 2 tane varlık bana saldırmaya başladı birisi kovboy şapkası takan maymun diğeri ise üzerinde Menajer++ yazan bir tişört giyen insandı.Maymunu kontrol ediyordu,Bu canlı diğerlerinden daha güçlüydü.Bu bir oyunsa 
-bölüm sonu gibiydi sanki.iskeletin baltasını aldım ve salırmaya başladım... Yaşamak için Savaş! \n""")
+print("""\033[96m\n Menajer++yı yendikten sonra bayılacak kadar yorgundun.Baltan da kırılmıştı elinde silah da kalmamıştı.Kendini iyileştirip duruyordun.
+Birden kolunda sarı şişe dövmesi olan ve kafasında siyah sargı olan adam yanına geldi.Sırtına hançer saplanmıştı,çok şaşgın bir şekilde bunu neden yaptığını sordun ve anında bayıldın.
+Uyandığında bir ormanın içerisindeydin,ne olduğunu anlamadın.Biraz ilerleyince yeni bir ceset buldun,bu ceset yeğenine aitti.Yavaş yavaş aileni katlediyorlardı.
+O an ki sinirle bağırmaya başladın.Çalıların arasından bi varlık fırladı ve sana şöyle dedi 'Beni yenersen özel güçler kazanacaksın! yenemezsen hayatını kaybedeceksin.' Yaşamak için Savaş! \n""")
 
 
 print("""
-Menajer++;
-Vuruş : 5
-Can : 27
-Enerji : 48
-Ekipman : kovboymonki,İyileştirici(+12 can -18 enerji)
+Saydam;
+Vuruş : 1
+Can : 10
+Enerji : 50
+Ekipman : Yumruk,İyileştirici(+3 can -8 enerji)
 
 ******************
 
 Zordiac;
-Vuruş : 4
-Can : 15
-Enerji : 70
-Ekipman : İskeletin baltası,İyileştirici(+3 can,-8 enerji) 
+Vuruş : 1
+Can : 10
+Enerji : 50
+Ekipman : Yumruk,İyileştirici(+3 can,-8 enerji) 
+
+Saydam,Senin kopyandır.Ona karşı iyi savaş
 
 Rakibin canı veya enerjisi 0 altına inerse veya puanınız 100 olursa kazanırsınız.Aynısı rakip için de geçerli
 """)
@@ -37,7 +40,7 @@ def nokta_ekle():
 
 
 class oyuncu():
-    def __init__(self,isim,can=15,power=70,puan=0):
+    def __init__(self,isim,can=10,power=50,puan=0):
         self.isim = isim
         self.can = can
         self.power = power
@@ -57,8 +60,8 @@ class oyuncu():
         if(sonuc==1):
             dusman.power -= 8 
             self.power -= 4
-            self.puan += 10
-            dusman.can -= 4
+            self.puan += 20
+            dusman.can -= 1
             self.bilgileri_goster()
             dusman.bilgileri_goster()
             print("\033[92mSaldırı Başarılı")
@@ -66,8 +69,8 @@ class oyuncu():
         else:
             dusman.power -= 4
             self.power -= 8
-            self.can -= 5
-            dusman.puan += 10
+            self.can -= 1
+            dusman.puan += 20
             self.bilgileri_goster()
             dusman.bilgileri_goster()
             print("\033[91mSaldırı Başarısız")
@@ -78,20 +81,20 @@ class oyuncu():
     def  savun(self, dusman):
         sonuc = self.saldir_savun_sayi()
         if(sonuc==1):
-            self.power -= 4
+            self.power += 4
             dusman.power -= 8
-            self.puan += 10
-            dusman.can -= 2
+            self.puan += 20
+            dusman.can -= 1
             self.bilgileri_goster()
             dusman.bilgileri_goster()
             print("\033[92mSavunma Başarılı")
 
     
         else:
-            dusman.power -= 4
+            dusman.power += 4
             self.power -= 8
-            self.can -= 5
-            dusman.puan += 10
+            self.can -= 1
+            dusman.puan += 20
             self.bilgileri_goster()
             dusman.bilgileri_goster()
             print("\033[91mSavunma Başarısız")
@@ -108,7 +111,7 @@ class oyuncu():
 
 
 oyuncu1 = oyuncu("Zordiac")
-oyuncu2 = oyuncu("Menajer++")
+oyuncu2 = oyuncu("Saydam")
 
 
 
@@ -138,15 +141,15 @@ while True:
 
 
     if(oyuncu1.puan==100 or oyuncu2.can <= 0 or oyuncu2.power <= 0 ):
-        print("\033[92m\nMenajer++yı Yendin Hikaye devam ediyor...")
+        print("\033[92m\nSaydamı Yendin Hikaye devam ediyor...")
         time.sleep(3)
-        import bolum5
+        import bolum6
         break
     if(oyuncu2.puan==100 or oyuncu1.can <= 0 or oyuncu1.power <= 0 ):
-        hsec = input("\033[91m\nOyunu Kaybettin,Menajer++ya yenildin! Önceki bölüme Baştan başlamak ister misin? e/h ")
-        print("Kaybedersen 1 önceki bölümden başlarsın.")
+        hsec = input("\033[91m\nOyunu Kaybettin,Saydam'a yenildin! Şuanki Bölüme Baştan başlamak ister misin? e/h ")
+
         if(hsec=="e" or hsec=="E"):
-            import bolum3
+            import bolum5
             break
         elif(hsec=="h" or hsec=="H"):
             sys.exit
@@ -154,7 +157,7 @@ while True:
         else:
             sys.exit
             break
-    if(oyuncu2.can == 15 or oyuncu2.can == 14 or oyuncu2.can == 11):
-        oyuncu2.can += 12
-        oyuncu2.power -= 22
+    if(oyuncu2.can == 2):
+        oyuncu2.can += 3
+        oyuncu2.power -= 8
          
