@@ -184,7 +184,7 @@ while True:
             sys.exit
             break
         else:
-            sys.exit
+            import bolum5
             break
     if(oyuncu2.can == 1 or oyuncu2.can == 7):
         oyuncu2.can += 5
